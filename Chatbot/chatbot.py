@@ -37,7 +37,7 @@ if "groq_model" not in st.session_state:
 
 
 
-avatar_img = Image.open('../sanjana_vector2.png')
+avatar_img = Image.open('sanjana_vector2.png')
 for message in st.session_state.messages : 
     if message['role'] == 'user':
         st.chat_message(message['role'],avatar = avatar_img).text(message['content'])
