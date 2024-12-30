@@ -4,7 +4,6 @@ import time
 # import numpy as np
 # import random
 from groq import Groq
-from streamlit_js_eval import streamlit_js_eval
 
 
 message_back = """
