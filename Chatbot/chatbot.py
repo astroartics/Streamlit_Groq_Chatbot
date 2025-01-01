@@ -18,7 +18,8 @@ header {visibility : hidden;}
 .st-emotion-cache-janbn0 {background-color : rgba(139, 139, 139, 0.78); box-shadow : inset 4px 4px 10px 0 rgba(0,0,0, 0.1), inset -4px -4px 10px 0 rgba(0,0,0, 0.1); border : 1.5px solid rgba(255,255,255,0.5)}
 .st-emotion-cache-4oy321 {background-color : rgb(48, 50, 48); box-shadow : inset 2px 2px 8px 0 rgba(0,0,0, 0.1), inset -2px -2px 8px 0 rgba(0,0,0, 0.1); border : 1.5px solid rgba(255,255,255,0.5)}
 .stAlertContainer {padding : 4px 6px 4px 6px; width : fit-content;}
-.e1obcldf2 {padding : 0 7px 0 7px; position : relative; left : 50%; transform : translate(-50%,0); border : 0.2px solid white; background-color : rgb(225, 225, 225);; color : black; box-shadow : inset 1px 1px 10px 0 rgba(0, 0, 0, 0.2), inset -1px -1px 10px 0 rgba(0, 0, 0, 0.2); margin-bottom : 5px;}
+.e1obcldf2 {padding : 0 7px 0 7px; position : relative; left : 50%; transform : translate(-50%,0); border : 0.2px solid white; background-color : rgb(225, 225, 225); color : black; box-shadow : inset 1px 1px 10px 0 rgba(0, 0, 0, 0.2), inset -1px -1px 10px 0 rgba(0, 0, 0, 0.2); margin-bottom : 5px;}
+.st-emotion-cache-atejua p {font-size : 0.9em;} 
 .e1obcldf2:hover {color : white; background-color : rgb(77, 77, 77); border : 0.2px solid white; transition : 0.2s; box-shadow : inset 1px 1px 10px 0 rgba(0, 0, 0, 0.2), inset -1px -1px 10px 0 rgba(0, 0, 0, 0.2);}
 .e1obcldf2:focus:not(:active) {color : white; background-color : rgb(64, 64, 64); border : 0.2px solid rgb(177, 177, 177);}
 .e121c1cl3 {display : none;}
@@ -30,28 +31,30 @@ st.markdown(message_back,unsafe_allow_html = True)
 avatar_ai = Image.open('Ai_avatar.png')
 prompt = st.chat_input("What is up?")
 st.title("Chatbot")
-time.sleep(0.5)
+time.sleep(0.4)
 st.chat_message("assistant",avatar = avatar_ai).text("Hey there! I'm WIAN - What's In A Name 👋")
-time.sleep(0.5)
+time.sleep(0.4)
 st.chat_message("assistant",avatar = avatar_ai).text("What's on your mind today?")
 
 
+client = Groq(api_key = st.secrets["GROQ_API_KEY"])
+if "groq_model" not in st.session_state:
+    st.session_state["groq_model"] = "llama3-70b-8192"
 
 
 if "messages" not in st.session_state :     # Initializing the messages history
-    st.session_state.messages = []
+    st.session_state.messages = [{'role' : 'user', 'content' : 'The developer of this chatbot has given you the name WIAN - What\'s In A Name.'}]
 
 # if "responses" not in st.session_state :     # Initializing the response history
 #     st.session_state.responses = []    
-if "groq_model" not in st.session_state:
-    st.session_state["groq_model"] = "llama3-70b-8192"
 
 
 
 avatar_img = Image.open('sanjana_vector2.png')
 for message in st.session_state.messages : 
     if message['role'] == 'user':
-        st.chat_message(message['role'],avatar = avatar_img).text(message['content'])
+        if message['content'] != "The developer of this chatbot has given you the name WIAN - What\'s In A Name.":
+            st.chat_message(message['role'],avatar = avatar_img).text(message['content'])
     else : 
         st.chat_message(message['role'],avatar = avatar_ai).text(message['content'])    
 
@@ -77,10 +80,24 @@ def write_response(res) :
         yield letter + ""
         time.sleep(0.018)
 
-client = Groq(api_key = st.secrets["GROQ_API_KEY"])
+# try: 
+#     for message in st.session_state.messages : 
+#         print(st.session_state.messages['content'])
+#         st.session_state.messages.append({"role" : "user",'content' : "I am going to call you WIAN from now on."})
+#         # st.chat_message("user",avatar = avatar_img).text("I am going to call you WIAN from now on.")
+#         res = client.chat.completions.create(    
+#                     model = st.session_state["groq_model"],
+#                     messages = [
+#                         {"role" : "user", "content" : "The developer of this chatbot is giving you the name WIAN for this session."} 
+#                     ]
+#                 )
+#         # response = st.write_stream(write_response(res.choices[0].message.content))   
+#         # st.session_state.messages.append({"role" : "assistant","content" : res.choices[0].message.content})
+# except Exception as e : st.error("Some error occured!")  
+
 
 if prompt :
-    time.sleep(0.15)
+    time.sleep(0.1)
     st.session_state.messages.append({"role" : "user",'content' : prompt})
     st.chat_message("user",avatar = avatar_img).text(prompt)
 
@@ -107,6 +124,6 @@ if st.button("Clear Chat"):
         st.toast("Nothing to clear")       
     else:
         st.toast("Clearing the chat...")          
-    time.sleep(0.1)
+    time.sleep(0.08)
     st.session_state.clear()
     st.rerun()
