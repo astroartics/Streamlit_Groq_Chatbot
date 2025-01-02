@@ -79,22 +79,7 @@ def write_response(res) :
     for letter in res:
         yield letter + ""
         time.sleep(0.018)
-
-# try: 
-#     for message in st.session_state.messages : 
-#         print(st.session_state.messages['content'])
-#         st.session_state.messages.append({"role" : "user",'content' : "I am going to call you WIAN from now on."})
-#         # st.chat_message("user",avatar = avatar_img).text("I am going to call you WIAN from now on.")
-#         res = client.chat.completions.create(    
-#                     model = st.session_state["groq_model"],
-#                     messages = [
-#                         {"role" : "user", "content" : "The developer of this chatbot is giving you the name WIAN for this session."} 
-#                     ]
-#                 )
-#         # response = st.write_stream(write_response(res.choices[0].message.content))   
-#         # st.session_state.messages.append({"role" : "assistant","content" : res.choices[0].message.content})
-# except Exception as e : st.error("Some error occured!")  
-
+        
 
 if prompt :
     time.sleep(0.1)
