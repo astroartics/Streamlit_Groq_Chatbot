@@ -120,7 +120,7 @@ if prompt :
             st.session_state.messages.append({"role" : "assistant","content" : "⚠️ Something went wrong"})      
 
 if st.button("Clear Chat"):
-    if not st.session_state.messages:
+    if st.session_state.messages == [{'role' : 'user', 'content' : 'The developer of this chatbot has given you the name WIAN - What\'s In A Name.'}]:
         st.toast("Nothing to clear")       
     else:
         st.toast("Clearing the chat...")          
