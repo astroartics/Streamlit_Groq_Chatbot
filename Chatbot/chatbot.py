@@ -15,7 +15,7 @@ header {visibility : hidden;}
 #chatbot {visibility : visible; width : 100%; font-size : 2.5rem; margin : 0; text-align : center; font-weight : 100; position : fixed; top : 0; left : 50%; transform : translate(-50%,0); z-index : 1; background-color : black;}
 .st-emotion-cache-w9jsfw {color : black;}
 .e1v02oy80 {color : white;}
-.st-emotion-cache-janbn0 {background-color : rgba(139, 139, 139, 0.78); box-shadow : inset 4px 4px 10px 0 rgba(0,0,0, 0.1), inset -4px -4px 10px 0 rgba(0,0,0, 0.1); border : 1.5px solid rgba(255,255,255,0.5)}
+.st-emotion-cache-janbn0,.st-emotion-cache-atejua {background-color : rgba(139, 139, 139, 0.78); box-shadow : inset 4px 4px 10px 0 rgba(0,0,0, 0.1), inset -4px -4px 10px 0 rgba(0,0,0, 0.1); border : 1.5px solid rgba(255,255,255,0.5)}
 .st-emotion-cache-4oy321 {background-color : rgb(48, 50, 48); box-shadow : inset 2px 2px 8px 0 rgba(0,0,0, 0.1), inset -2px -2px 8px 0 rgba(0,0,0, 0.1); border : 1.5px solid rgba(255,255,255,0.5)}
 .stAlertContainer {padding : 4px 6px 4px 6px; width : fit-content;}
 .e1obcldf2 {padding : 0 7px 0 7px; position : relative; left : 50%; transform : translate(-50%,0); border : 0.2px solid white; background-color : rgb(225, 225, 225); color : black; box-shadow : inset 1px 1px 10px 0 rgba(0, 0, 0, 0.2), inset -1px -1px 10px 0 rgba(0, 0, 0, 0.2); margin-bottom : 5px;}
