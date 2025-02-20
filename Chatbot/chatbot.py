@@ -26,9 +26,7 @@ header {visibility : hidden;}
 div[data-testid=stToast] {position : fixed; bottom:10px; right:50%; transform:translate(50%,0); background-color:rgb(69, 69, 69);color:white;}
 </style>   
 """
-
-def main():
-    st.write(message_back,unsafe_allow_html = True)
+st.write(message_back,unsafe_allow_html = True)
 
 avatar_ai = Image.open('Ai_avatar.png')
 prompt = st.chat_input("What is up?")
