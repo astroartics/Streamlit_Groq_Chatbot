@@ -28,7 +28,7 @@ div[data-testid=stToast] {position : fixed; bottom:10px; right:50%; transform:tr
 """
 st.markdown(message_back,unsafe_allow_html = True)
 
-avatar_ai = Image.open('Ai_avatar.png')
+avatar_ai = Image.open('Images/Ai_avatar.png')
 prompt = st.chat_input("What is up?")
 st.title("Chatbot")
 time.sleep(0.4)
@@ -50,7 +50,7 @@ if "messages" not in st.session_state :     # Initializing the messages history
 
 
 
-avatar_img = Image.open('sanjana_vector2.png')
+avatar_img = Image.open('Images/vector.png')
 for message in st.session_state.messages : 
     if message['role'] == 'user':
         if message['content'] != "The developer of this chatbot has given you the name WIAN - What\'s In A Name.":
